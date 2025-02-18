@@ -8,7 +8,7 @@ using namespace emp;
 using namespace std;
 
 
-const long long CHUNK_SIZE = 1LL << 20; // Process in chunks of 1M elements
+const long long CHUNK_SIZE = 1000000000; // Process in chunks of 1B elements
 
 void test_input_speed(BoolIO<NetIO> **ios, int party, long long input_sz) {
     long long total_sz = input_sz;  // Convert log size to actual size

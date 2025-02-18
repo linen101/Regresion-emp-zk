@@ -1,0 +1,20 @@
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+
+------------ ZKP inner product test ------------
+
+Total input size: 31250
+Chunked batch input average time: 1.559 ms 
+num of entries: 625
+prove [625]  range checks
+time use for 2 parties:0.036732 sec
+Total input size: 1250
+Chunked batch input average time: 0.076 ms 
+helen [25] feature input 
+time use for 2 parties:12450.9 ms
