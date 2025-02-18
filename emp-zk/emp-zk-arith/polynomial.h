@@ -11,7 +11,7 @@ public:
   int party;
   IO *io;
   uint64_t delta;
-  int buffer_sz = 1024;
+  int buffer_sz = 1000000;
   uint64_t *buffer = nullptr;
   uint64_t *buffer1 = nullptr;
   FpOSTriple<IO> *ostriple;
