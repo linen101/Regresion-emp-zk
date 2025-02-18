@@ -2,6 +2,7 @@
 #include <emp-zk/emp-zk.h>
 #include <iostream>
 #include "test_input_speed.hpp"
+#include "test_input_range.hpp"
 
 using namespace emp;
 using namespace std;
@@ -83,12 +84,14 @@ int main(int argc, char **argv) {
     parties = atoi(argv[5]);
   }
   setup_zk_arith<BoolIO<NetIO>>(ios, threads, party);
+  setup_zk_bool<BoolIO<NetIO>>(ios, threads, party);
   // Case 1: matrix = d *  n , n dots
   repeat = (n /parties)*d;
   sz  = n / parties;
   test_n = repeat * sz *2;
   test_inner_product(ios, party);
   test_input_speed(ios, party, test_n);
+  
 
 
   // Case 2: size = d * d, n = d
@@ -98,6 +101,9 @@ int main(int argc, char **argv) {
   test_n = repeat * sz *2;
   test_inner_product(ios, party);
   test_input_speed(ios, party, test_n);
+  uint64_t b_low = 0; 
+  uint64_t b_high = 10000;
+  test_input_range(b_low, b_high, repeat, party);
 
   // Case 3: size = d * 1, n varies
   repeat = d ;
@@ -106,9 +112,9 @@ int main(int argc, char **argv) {
   test_inner_product(ios, party);
   test_input_speed(ios, party, test_n);
 
-  
-  finalize_zk_arith<BoolIO<NetIO>>();
 
+  finalize_zk_arith<BoolIO<NetIO>>();
+  finalize_zk_bool<BoolIO<NetIO>>();
   for (int i = 0; i < threads; ++i) {
     delete ios[i]->io;
     delete ios[i];
