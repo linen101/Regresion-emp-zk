@@ -10,7 +10,7 @@ using namespace std;
 
 const long long CHUNK_SIZE = 1LL << 20; // Process in chunks of 1M elements
 
-void test_input_speed(BoolIO<NetIO> **ios, int party, int input_sz) {
+void test_input_speed(BoolIO<NetIO> **ios, int party, long long input_sz) {
     long long total_sz = input_sz;  // Convert log size to actual size
     std::cout << "Total input size: " << total_sz << std::endl;
 
