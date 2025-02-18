@@ -3,6 +3,7 @@
 #include <iostream>
 #include "test_input_speed.hpp"
 #include "test_input_range.hpp"
+#include "test_secret_input_range.hpp"
 
 using namespace emp;
 using namespace std;
@@ -101,9 +102,9 @@ int main(int argc, char **argv) {
   test_n = repeat * sz *2;
   test_inner_product(ios, party);
   test_input_speed(ios, party, test_n);
-  uint64_t b_low = 0; 
-  uint64_t b_high = 10000;
-  test_input_range(b_low, b_high, repeat, party);
+  int64_t b_low = 1; 
+  int64_t b_high = 10000;
+  test_input_range(b_low, b_high, repeat, party, parties);
 
   // Case 3: size = d * 1, n varies
   repeat = d ;
@@ -111,6 +112,11 @@ int main(int argc, char **argv) {
   test_n = repeat * sz *2;
   test_inner_product(ios, party);
   test_input_speed(ios, party, test_n);
+
+  // Range Checks for participation set update
+  test_secret_input_range(b_low, b_high, sz, party, parties);
+  test_secret_input_range(b_low, b_high, sz, party, parties);
+  test_secret_input_range(b_low, b_high, sz, party, parties);
 
 
   finalize_zk_arith<BoolIO<NetIO>>();

@@ -4,8 +4,8 @@
 
 
 
-
-int get_num_range_bits(uint64_t B_low, uint64_t B_high) {
+// int64_t for negative B_low
+int get_num_range_bits(int64_t B_low, int64_t B_high) {
 	return ceil(log2(B_high - B_low + 1));
 }
 
